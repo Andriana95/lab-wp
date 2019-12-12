@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to our Pizza Delivery App</h1>
+</header>
+<main>
+    <h2>Choose pizza:</h2>
+    <form th:action="@{/selectPizza.do}" th:method="POST">
+        <th:block th:each="pizza : ${pizzas}">
+            <input type="radio" name="pizza" th:value="${pizza.name}"><span
+                th:text="${pizza.name + ' ' + pizza.description}"></span><br/>
+        </th:block>
+        <button  href="/selectPizza.do" type="submit">Submit</button>
+    </form>
+    <form th:method="post" th:action="@{/}">
+        <p>Pizza Name</p>
+        <input type="text" name="newPizza">
+        <p>Descrition</p>
+        <input type="text" name="newDescription">
+     <button type="submit">Add pizza</button>
+
+    </form>
+</main>
+</body>
+</html>

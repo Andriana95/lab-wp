@@ -1,0 +1,149 @@
+############################## ENDPOINTS FOR INGREDIENTS API ##############################
+### Create ingredient Paprika
+POST http://localhost:8080/ingredients
+Content-Type: application/json
+
+# @RequestBody that will be mapped to Ingredient ingredient
+{
+  "name": "Paprika",
+  "spicy": true,
+  "amount": 50,
+  "veggie": true
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Create ingredient Mango
+POST http://localhost:8080/ingredients
+Content-Type: application/json
+
+# @RequestBody that will be mapped to Ingredient ingredient
+{
+  "name": "Mango",
+  "spicy": false,
+  "amount": 25,
+  "veggie": false
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Update ingredient Paprika
+PATCH http://localhost:8080/ingredients/Paprika
+Content-Type: application/json
+
+# @RequestBody that will be mapped to Ingredient ingredient
+{
+  "amount": 65
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Get ingredients Page
+GET http://localhost:8080/ingredients
+#page: 1
+#page-size:10
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Get ingredient Paprika
+GET http://localhost:8080/ingredients/Paprika
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Delete specific ingredient Paprika
+DELETE http://localhost:8080/ingredients/Paprika
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+############################## ENDPOINTS FOR PIZZAS API ##############################
+### Create pizza
+POST http://localhost:8080/pizzas
+Content-Type: application/json
+
+# @RequestBody that will be mapped to PizzaDTO pizzaDTO
+{
+  "name": "Carbonara",
+  "description": "BestPizza",
+  "ingredientIds": [
+    "Mango"
+  ]
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Update pizza Carbonara
+PUT http://localhost:8080/pizzas/Carbonara
+Content-Type: application/json
+
+# @RequestBody that will be mapped to PizzaDTO pizzaDTO
+{
+  "description": "updated best pizza",
+  "ingredientIds": [
+    "Mango"
+  ]
+}
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Get all pizzas
+GET http://localhost:8080/pizzas
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Get pizza Carbonara
+GET http://localhost:8080/pizzas/Carbonara
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Delete pizza Carbonara
+DELETE http://localhost:8080/pizzas/Carbonara
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+
+
